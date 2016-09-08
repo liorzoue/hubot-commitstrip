@@ -22,9 +22,11 @@ latest = (l) ->
 byNumber = (page, l) ->
   fetchCommitStrip(makeUrl(l) + 'page/' + page)
     .then ($) ->
-      title: $('.post .entry-title').text()
-      url: $('.post .entry-title a').attr('href')
-      image: $('.post img').attr('src')
+      fetchCommitStrip($('.excerpt a').first().attr('href'))
+        .then ($) ->
+          title: $('.entry-header h1').first().text()
+          image: $('.entry-content img').first().attr('src')
+
 
 pageCount = (l) ->
   fetchCommitStrip(makeUrl(l) + 'page/2/')

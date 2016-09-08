@@ -21,7 +21,7 @@ module.exports = (robot) ->
         #{strip.image}
       """
 
-  robot.respond /commitstrip( latest)?/, (res) ->
+  robot.respond /commitstrip( latest)?$/, (res) ->
     lib.latest().then replyStrip(res)
   robot.respond /commitstrip random/, (res) ->
     lib.random().then replyStrip(res)
